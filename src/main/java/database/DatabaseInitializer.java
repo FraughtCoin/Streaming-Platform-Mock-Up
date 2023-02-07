@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class DatabaseInitializer {
 
@@ -16,7 +17,7 @@ public class DatabaseInitializer {
             "streamerId", "length", "dateAdded", "name"};
     private static final String[] usersColumns = new String[]{"id", "name"};
 
-    public Database initializeDatabase(File inputDir) {
+    public Database initializeDatabase(String[] args) {
         Database database = Database.getInstance();
         database.dropAllTables();
 
@@ -36,7 +37,12 @@ public class DatabaseInitializer {
                 new String[]{"userId", "streamId"},
                 new String[]{"int", "int"});
 
-        for (File f : inputDir.listFiles()) {
+        ArrayList<File> inputs = new ArrayList<>();
+        inputs.add(new File("src/main/resources/" + args[0]));
+        inputs.add(new File("src/main/resources/" + args[1]));
+        inputs.add(new File("src/main/resources/" + args[2]));
+
+        for (File f : inputs) {
             try (BufferedReader reader = Files.newBufferedReader(Path.of(f.getPath()));
                  CSVReader csvReader = new CSVReader(reader)) {
 
@@ -50,17 +56,17 @@ public class DatabaseInitializer {
                     String[] columnValues = entry;
                     switch (fileName) {
                         case "streamers.csv": {
-                            columnValues[2] = "'" + entry[2] + "'";
+                            columnValues[2] = "'" + entry[2].replace("'", "''") + "'";
                             columns = streamersColumns;
                             break;
                         }
                         case "streams.csv": {
-                            columnValues[7] = "'" + entry[7] + "'";
+                            columnValues[7] = "'" + entry[7].replace("'", "''") + "'";
                             columns = streamsColumns;
                             break;
                         }
                         case "users.csv": {
-                            columnValues[1] = "'" + entry[1] + "'";
+                            columnValues[1] = "'" + entry[1].replace("'", "''") + "'";
                             String[] temp = columnValues;
                             columnValues = new String[2];
                             columnValues[0] = temp[0];

@@ -7,35 +7,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Streamer {
+public class User {
 
-    private int streamerType;
     private int id;
     private String name;
     private List<Stream> streamList;
 
-    public Streamer(ResultSet resultSet) {
+    public User(ResultSet resultSet) {
         Database database = Database.getInstance();
         try {
-            streamerType = resultSet.getInt("streamerType");
             id = resultSet.getInt("id");
             name = resultSet.getString("name");
-            streamList = database.getStreamsByStreamerId(id);
+            streamList = database.getStreamsByUserId(id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public List<Stream> getStreamList() {
-        return streamList;
-    }
-
-    public int getStreamerType() {
-        return streamerType;
-    }
-
-    public void setStreamerType(int streamerType) {
-        this.streamerType = streamerType;
     }
 
     public int getId() {
@@ -54,19 +40,11 @@ public class Streamer {
         this.name = name;
     }
 
+    public List<Stream> getStreamList() {
+        return streamList;
+    }
+
     public void setStreamList(List<Stream> streamList) {
         this.streamList = streamList;
     }
-
-    //    public void addStreams(ResultSet resultSet) {
-//        try {
-//            while (resultSet.next()) {
-//
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
-
 }

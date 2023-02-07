@@ -1,7 +1,8 @@
+import commands.*;
 import database.Database;
 import database.DatabaseInitializer;
 
-import java.io.File;
+import java.io.*;
 
 
 public class ProiectPOO {
@@ -18,11 +19,52 @@ public class ProiectPOO {
             throw new RuntimeException(e);
         }
 
-        File inputDir = new File("src/main/resources/" + args[0]);
-        File commandsFile = new File("src/main/resources/" + args[1] + "commands.txt");
-
         DatabaseInitializer initializer = new DatabaseInitializer();
-        Database database = initializer.initializeDatabase(inputDir);
+        Database database = initializer.initializeDatabase(args);
+
+        try (FileReader fr = new FileReader("src/main/resources/" + args[3]);
+             BufferedReader br = new BufferedReader(fr)) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+
+                Command commandToRun;
+                switch (line.split(" ")[1]) {
+                    case "LIST": {
+                        commandToRun = new ListCommand(line);
+                        break;
+                    } case "ADD": {
+                        commandToRun = new AddCommand(line);
+                        break;
+                    } case "DELETE": {
+                        commandToRun = new DeleteCommand(line);
+                        break;
+                    } case "LISTEN": {
+                        commandToRun = new ListenCommand(line);
+                        break;
+                    } case "RECOMMEND": {
+                        commandToRun = new RecommendCommand(line);
+                        break;
+                    } case "SURPRISE": {
+                        commandToRun = new SurpriseCommand(line);
+                        break;
+                    }
+                    default: {
+                        throw new RuntimeException("Command does not exist");
+                    }
+                }
+
+                commandToRun.run();
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+//        ListCommand l1 = new ListCommand(137);
+//        l1.run();
     }
 
 }
