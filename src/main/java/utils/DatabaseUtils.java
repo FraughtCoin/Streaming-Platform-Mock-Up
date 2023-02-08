@@ -8,9 +8,6 @@ public final class DatabaseUtils {
 
     public static String createTableQuery(String tableName, String[] columns, String[] columnsTypes) {
         StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + " (");
-//        for (String s : columns) {
-//            query.append(s).append(" varchar(255),");
-//        }
         for (int i = 0; i < columns.length; i++) {
             query.append(columns[i]).append(" ").append(columnsTypes[i]).append(",");
         }

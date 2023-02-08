@@ -14,12 +14,13 @@ public class AddCommand extends Command {
     public void run() {
         Database database = Database.getInstance();
         StringBuilder streamName = new StringBuilder("'");
+
         for (int i = 4; i < args.length; i++) {
             streamName.append(args[i]).append(" ");
         }
+
         streamName = new StringBuilder(streamName.substring(0, streamName.length() - 1));
         streamName.append("'");
-//        System.out.println(streamName);
         database.insertInto("streams",
                 new String[]{"streamType", "id", "streamGenre", "noOfStreams",
                         "streamerId", "length", "dateAdded", "name"},

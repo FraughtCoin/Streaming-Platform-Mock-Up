@@ -38,9 +38,7 @@ public class CreateStreamTable implements CreateTableInterface{
                         "streamerId", "length", "dateAdded", "name"};
                 database.insertInto("streams", columns, columnValues);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (CsvValidationException e) {
+        } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
         }
 

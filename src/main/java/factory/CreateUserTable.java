@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 
 public class CreateUserTable implements CreateTableInterface {
 
@@ -53,9 +52,7 @@ public class CreateUserTable implements CreateTableInterface {
                             new String[]{entry[0], s});
                 }
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (CsvValidationException e) {
+        } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
         }
     }

@@ -2,19 +2,13 @@ package commands;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.internal.Streams;
 import comparators.StreamComparatorByDateAndViews;
-import comparators.StreamComparatorByViews;
 import database.Database;
 import models.Stream;
 import models.Streamer;
 import models.User;
 import utils.JsonUtils;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 
 public class SurpriseCommand extends  Command{

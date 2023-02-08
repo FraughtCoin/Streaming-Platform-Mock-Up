@@ -4,7 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class DateUtils {
+public final class DateUtils {
+
+    private DateUtils(){
+
+    }
 
     public static String secondsToLength(long seconds) {
         String time = "";
@@ -20,8 +24,6 @@ public class DateUtils {
             time = time + "0";
         }
         return time + (seconds % 60);
-
-//        return new SimpleDateFormat("mm:ss").format(new Date(seconds * 1000));
     }
 
     public static String secondsToDate(long seconds) {

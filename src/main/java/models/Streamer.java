@@ -4,7 +4,6 @@ import database.Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Streamer {
@@ -30,14 +29,6 @@ public class Streamer {
         return streamList;
     }
 
-    public int getStreamerType() {
-        return streamerType;
-    }
-
-    public void setStreamerType(int streamerType) {
-        this.streamerType = streamerType;
-    }
-
     public int getId() {
         return id;
     }
@@ -57,16 +48,5 @@ public class Streamer {
     public void setStreamList(List<Stream> streamList) {
         this.streamList = streamList;
     }
-
-    //    public void addStreams(ResultSet resultSet) {
-//        try {
-//            while (resultSet.next()) {
-//
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
 
 }

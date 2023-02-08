@@ -21,6 +21,9 @@ public class DatabaseTableFactory {
                 CreateUserTable c = new CreateUserTable();
                 c.createTable();
                 c.populateTable(f);
+                break;
+            } default: {
+                throw new RuntimeException("Unknown file");
             }
         }
     }

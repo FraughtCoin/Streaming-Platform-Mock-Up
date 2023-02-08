@@ -5,10 +5,6 @@ import models.Streamer;
 import models.User;
 import utils.DatabaseUtils;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +48,6 @@ public class Database {
     }
 
     public void dropAllTables() {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             statement.execute(USE_DB_NAME);
@@ -78,7 +73,6 @@ public class Database {
     }
 
     public void createTable(String tableName, String[] columns, String[] columnsType) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.createTableQuery(tableName, columns, columnsType);
@@ -91,7 +85,6 @@ public class Database {
     }
 
     public void insertInto(String tableName, String[] columns, String[] columnValues) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.insertIntoQuery(tableName, columns, columnValues);
@@ -104,7 +97,6 @@ public class Database {
     }
 
     public Streamer getStreamerById(int id) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.selectFromWhereEqualsQuery("streamers", "id", Integer.toString(id));
@@ -124,7 +116,6 @@ public class Database {
     }
 
     public User getUserById(int id) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.selectFromWhereEqualsQuery("users", "id", Integer.toString(id));
@@ -144,7 +135,6 @@ public class Database {
     }
 
     public Stream getStreamById(int id) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.selectFromWhereEqualsQuery("streams", "id", Integer.toString(id));
@@ -165,7 +155,6 @@ public class Database {
     }
 
     public List<Stream> getStreamsByStreamerId(int id) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.selectFromWhereEqualsQuery("streams", "streamerId", Integer.toString(id));
@@ -186,7 +175,6 @@ public class Database {
     }
 
     public List<Stream> getStreamsByUserId(int id) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.selectFromWhereEqualsQuery("usersAndStreams", "userId", Integer.toString(id));
@@ -219,7 +207,6 @@ public class Database {
     }
 
     public List<Stream> getStreamsByStreamerIdAndType(int id, int type) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.selectFromWhere2EqualsQuery("streams", "streamerId", Integer.toString(id),
@@ -241,7 +228,6 @@ public class Database {
     }
 
     public List<Streamer> getAllStreamers() {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = "SELECT * FROM streamers";
@@ -262,7 +248,6 @@ public class Database {
     }
 
     public void deleteStream(int streamerId, int streamId) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             String query = DatabaseUtils.deleteFromWhere2EqualsQuery("streams", "id", Integer.toString(streamId),
@@ -279,7 +264,6 @@ public class Database {
     }
 
     public void updateStream(int streamId) {
-//        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         try (Statement statement = connection.createStatement()) {
 
             statement.execute(USE_DB_NAME);

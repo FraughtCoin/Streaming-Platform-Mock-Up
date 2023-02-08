@@ -35,9 +35,7 @@ public class CreateStreamerTable implements CreateTableInterface {
                 String[] columns = new String[]{"streamerType", "id", "name"};
                 database.insertInto("streamers", columns, columnValues);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (CsvValidationException e) {
+        } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
         }
 

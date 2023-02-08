@@ -4,7 +4,11 @@ import com.google.gson.JsonObject;
 import models.Stream;
 import models.Streamer;
 
-public class JsonUtils {
+public final class JsonUtils {
+
+    private JsonUtils() {
+
+    }
 
     public static JsonObject streamToJsonObject(Stream stream, Streamer streamer) {
         JsonObject jsonObject = new JsonObject();

@@ -4,7 +4,6 @@ import database.Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -42,9 +41,5 @@ public class User {
 
     public List<Stream> getStreamList() {
         return streamList;
-    }
-
-    public void setStreamList(List<Stream> streamList) {
-        this.streamList = streamList;
     }
 }

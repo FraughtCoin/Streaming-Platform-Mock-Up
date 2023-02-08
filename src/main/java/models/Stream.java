@@ -1,6 +1,5 @@
 package models;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -31,16 +30,9 @@ public class Stream {
         }
     }
 
-    public int getStreamType() {
-        return streamType;
-    }
 
     public int getId() {
         return id;
-    }
-
-    public int getStreamGenre() {
-        return streamGenre;
     }
 
     public long getNoOfStreams() {
@@ -61,19 +53,6 @@ public class Stream {
 
     public String getName() {
         return name;
-    }
-
-    public String toString() {
-        return "Stream{" +
-                "streamType=" + streamType +
-                ", id=" + id +
-                ", streamGenre=" + streamGenre +
-                ", noOfStreams=" + noOfStreams +
-                ", streamerId=" + streamerId +
-                ", length=" + length +
-                ", dateAdded=" + dateAdded +
-                ", name='" + name + '\'' +
-                '}';
     }
 
     @Override
